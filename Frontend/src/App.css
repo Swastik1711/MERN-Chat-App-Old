@@ -1,42 +1,120 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 24rem;
+    margin-top: 4rem;
+}
+.login-box {
+    width: 25vw;
+    padding: 1.5rem;
+    backdrop-filter: blur(8px) saturate(160%);
+    -webkit-backdrop-filter: blur(8px) saturate(160%);
+    background-color: rgba(74, 74, 74, 0.16);
+    border-radius: 12px;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+.home-box {
+    width: 99vw;
+    height:97vh;
+    display: flex;
+    backdrop-filter: blur(15px) saturate(160%);
+    -webkit-backdrop-filter: blur(15px) saturate(160%);
+    background-color: rgba(74, 74, 74, 0.16);
+    border-radius: 12px;
+    box-sizing: border-box;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.sidebar {
+    min-width: 28%;
+    padding: 13px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.message-container {
+    flex: 1;
+    overflow: hidden;
+    /* Optional: hide overflow content */
 }
 
-.card {
-  padding: 2em;
+.conversation {
+    transition: background-color 0.3s;
 }
 
-.read-the-docs {
-  color: #888;
+.conversation:hover {
+    background-color: rgba(150, 150, 170, 0.34);}
+
+/*
+
+rgba(150, 150, 170, 0.34);
+recent prep
+rgba(137, 137, 153, 0.456);
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-width: 96px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.login-box {
+    width: 100%;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    background-color: #ccc;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background-clip: padding-box;
+    opacity: 0;
+} */
+
+.login-title {
+    font-size: 1.875rem;
+    /* Equivalent to text-3xl */
+    font-weight: 600;
+    /* Equivalent to font-semibold */
+    text-align: center;
+    color: #666;
+}
+
+/* --------------------------------------------- */
+.messageBox {
+    padding: 0.1vmax;
+    margin: 0.5vmax;
+    border-radius: 0.5vmax;
+    display: inline-block;
+    clear: both;
+    font-size: 1.1vmax;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sender {
+    float: right;
+    background-color: #4b596bcd;
+    color: black;
+    text-align: right;
+}
+
+.receiver {
+    float: left;
+    background-color: #4b596bcd;
+    text-align: left;
+    color: black;
+}
+/* You can add more styling as per your requirement */
+
+.message-input {
+    max-height: 180px;
+    height: auto;
+    /* Limit the height to 5 lines */
+    resize: vertical ;
+    padding: 10px;  
+    border-radius: 8px;
+    overflow-y: auto;
+    /* Enable scrolling if content exceeds height */
 }
