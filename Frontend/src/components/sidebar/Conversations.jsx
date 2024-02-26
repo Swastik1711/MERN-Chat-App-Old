@@ -1,22 +1,23 @@
 import React from 'react'
 import Conversation from './Conversation'
 import { height } from '@mui/system'
+import useConversations from '../../hooks/useConversations'
 
 const Conversations = () => {
+
+  const { loading, conversations } = useConversations();
   return (
-      <div >
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={false}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={false}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={true}/>
-          <Conversation avatarImage={"/avatar.png"} name={"John Doe"} isOnline={false}/>
+    <div >
+      {
+        conversations.map((conversation, idx) => (
+          <Conversation
+            key={conversation._id}
+            conversation={conversation}
+            isOnline={true} 
+            lastIndex = {idx === conversations.length-1}
+            />
+        ))
+      }
     </div>
   )
 }

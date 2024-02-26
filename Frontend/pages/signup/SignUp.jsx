@@ -6,26 +6,33 @@ import {
   FormControlLabel,
   Checkbox,
   Button,
-  Link,
+  CircularProgress
 } from '@mui/material';
+import { Link } from 'react-router-dom';
+import useSignup from '../../src/hooks/useSignup';
 
 const SignUp = () => {
-  const [fullName, setFullName] = useState('');
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [gender, setGender] = useState('');
 
-  const handleSubmit = (e) => {
+  const [inputs, setInputs] = useState({
+    fullName: '',
+    username: '',
+    password: '',
+    confirmPassword: '',
+    gender: ''
+  })
+
+  const { loading, signup } = useSignup();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle sign-in logic here
+    await signup(inputs)
   };
 
   return (
     <div className='container'>
       <div className='login-box'>
         <Container maxWidth="sm">
-      <form onSubmit={handleSubmit} noValidate autoComplete="off">
+      <form onSubmit={handleSubmit} >
         <Typography variant="h5" align="center" gutterBottom>
           Chit Chat
             </Typography>
@@ -35,8 +42,8 @@ const SignUp = () => {
           variant="filled"
           fullWidth
           margin="normal"
-          value={fullName}
-          onChange={(e) => setFullName(e.target.value)}
+          value={inputs.fullName}
+          onChange={(e) => setInputs({...inputs,fullName: e.target.value})}
           required
             />
         <TextField
@@ -44,8 +51,8 @@ const SignUp = () => {
           variant="filled"
           fullWidth
           margin="normal"
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
+          value={inputs.username}
+          onChange={(e) => setInputs({...inputs,username: e.target.value})}
           required
           />
         <TextField
@@ -54,8 +61,8 @@ const SignUp = () => {
           fullWidth
           margin="normal"
           type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={inputs.password}
+          onChange={(e) => setInputs({...inputs,password: e.target.value})}
           required
         />
         <TextField
@@ -64,16 +71,16 @@ const SignUp = () => {
           fullWidth
           margin="normal"
           type="password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
+          value={inputs.confirmPassword}
+          onChange={(e) => setInputs({...inputs,confirmPassword: e.target.value})}
           required
         />
             <div style={{display: "flex",justifyContent: "left"}}>
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={gender==='male'}
-                    onChange={(e) => setGender(e.target.name)}
+                    checked={inputs.gender==='male'}
+                    onChange={(e) => setInputs({...inputs,gender: e.target.name})}
                     name="male"
                     color="primary"
                   />
@@ -83,8 +90,8 @@ const SignUp = () => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={gender==='female'}
-                    onChange={(e) => setGender(e.target.name)}
+                    checked={inputs.gender==='female'}
+                    onChange={(e) => setInputs({...inputs,gender: e.target.name})}
                     name="female"
                     color="primary"
                   />
@@ -100,11 +107,12 @@ const SignUp = () => {
           color="success"
           size="large"
           sx={{ mt: 1 }}
+          disabled={loading}
         >
-          SIGN UP
+          {loading ? <CircularProgress size={"30px"}/> : "Sign Up"}
         </Button>
         <Typography variant="body2" align="left" sx={{ mt: 2 }}>
-          <Link href="/login" color="primary">
+          <Link to="/login" color="primary">
             Already have an account?
           </Link>
         </Typography>

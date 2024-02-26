@@ -6,17 +6,21 @@ import {
   FormControlLabel,
   Checkbox,
   Button,
-  Link,
+  CircularProgress,
 } from '@mui/material';
+import { Link } from 'react-router-dom';
+import useLogin from '../../src/hooks/useLogin';
 
 const Login = () => {
-  const [email, setEmail] = useState('');
+  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
 
-  const handleSubmit = (e) => {
+  const { loading, login }=useLogin();
+
+  const handleSubmit = async(e) => {
     e.preventDefault();
-    // Handle sign-in logic here
+    await login({ username, password });
   };
 
   return (
@@ -33,8 +37,8 @@ const Login = () => {
           variant="filled"
           fullWidth
           margin="normal"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
           required
         />
         <TextField
@@ -72,12 +76,13 @@ const Login = () => {
           color="success"
           size="large"
           sx={{ mt: 1 }}
+          disabled={loading}
         >
-          LOG IN
+          {loading ? <CircularProgress size={"30px"}/> : "Log In"}
         </Button>
         <Typography variant="body2" align="center" sx={{ mt: 3 }}>
           Not registered?{' '}
-          <Link href="/signup" color="primary">
+          <Link to="/signup" color="primary">
             Create account
           </Link>
         </Typography>

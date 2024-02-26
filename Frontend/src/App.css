@@ -39,11 +39,11 @@
     /* Optional: hide overflow content */
 }
 
-.conversation {
+.conversation-box {
     transition: background-color 0.3s;
 }
 
-.conversation:hover {
+.conversation-box:hover {
     background-color: rgba(150, 150, 170, 0.34);}
 
 /*
@@ -87,21 +87,19 @@ rgba(137, 137, 153, 0.456);
     padding: 0.1vmax;
     margin: 0.5vmax;
     border-radius: 0.5vmax;
-    display: inline-block;
-    clear: both;
     font-size: 1.1vmax;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .sender {
-    float: right;
+    align-self: flex-end;
     background-color: #4b596bcd;
     color: black;
     text-align: right;
 }
 
 .receiver {
-    float: left;
+    align-self: flex-start;
     background-color: #4b596bcd;
     text-align: left;
     color: black;

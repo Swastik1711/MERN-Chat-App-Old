@@ -1,12 +1,15 @@
 import React from 'react'
+import { useChatInfoContext } from '../../context/ChatInfoContext'
 
-const Message = ({message, isMine}) => {
+const Message = ({ message }) => {
+  
+  const { user} = useChatInfoContext();
+  const fromMe = message.senderId === user._id;
   return (
-      <div>
-        <div className={`messageBox ${isMine ? 'sender' : 'receiver'}`}>
-            <p>{message}</p>
+        <div className={`messageBox ${fromMe ? 'sender' : 'receiver'}`}>
+          <p>{message.message}</p>
+          <p>9.07</p>
         </div>
-    </div>
   )
 }
 
