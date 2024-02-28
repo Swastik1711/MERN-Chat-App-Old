@@ -21,12 +21,12 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-const BadgeAvatar = ({src,isOnline}) => {
+const BadgeAvatar = ({src,onlineStatus}) => {
   return (
     <StyledBadge
         overlap="circular"
         anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-        variant={isOnline ? "dot" : "standard"}
+        variant={onlineStatus ? "dot" : "standard"}
     >
           <Avatar alt="Remy Sharp" src={src} />
     </StyledBadge>

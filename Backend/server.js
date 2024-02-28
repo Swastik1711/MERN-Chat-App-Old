@@ -6,10 +6,11 @@ const authRoutes = require("./routes/auth.routes.js");
 const messageRoutes = require("./routes/message.routes.js");
 const userRoutes = require("./routes/user.routes.js");
 const connectToMongoDB = require("./db/connectToMongoDB.js");
+const { app, server } = require("./socket/socket.js");
 
 
 const PORT = process.env.PORT || 5000;
-const app = express();
+
 
 dotenv.config();
 app.use(express.json());
@@ -24,7 +25,7 @@ app.use("/api/messages", messageRoutes);
 app.use("/api/users", userRoutes);
 
 
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   connectToMongoDB();
     console.log(`server running on port ${PORT}`);
 })

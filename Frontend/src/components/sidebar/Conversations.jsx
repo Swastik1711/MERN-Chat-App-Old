@@ -6,6 +6,7 @@ import useConversations from '../../hooks/useConversations'
 const Conversations = () => {
 
   const { loading, conversations } = useConversations();
+
   return (
     <div >
       {
@@ -13,7 +14,6 @@ const Conversations = () => {
           <Conversation
             key={conversation._id}
             conversation={conversation}
-            isOnline={true} 
             lastIndex = {idx === conversations.length-1}
             />
         ))

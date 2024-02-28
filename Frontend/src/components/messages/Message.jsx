@@ -8,7 +8,7 @@ const Message = ({ message }) => {
   return (
         <div className={`messageBox ${fromMe ? 'sender' : 'receiver'}`}>
           <p>{message.message}</p>
-          <p>9.07</p>
+          {/* <p>9.07</p> */}
         </div>
   )
 }

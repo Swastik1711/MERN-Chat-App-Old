@@ -19,9 +19,9 @@ const MessageContainer = () => {
         ) : (
             <>
               <div style={{height:"10%" ,backgroundColor:"rgba(113, 113, 115, 0.533)", borderTopRightRadius:"12px", display: "flex",alignItems:"center"}}>
-                  <NameBar name={selectedConversation.fullName} status={"Active now"} profilePic={selectedConversation.profilePic}/>
+                  <NameBar choosedConversation={selectedConversation}/>
               </div>
-              <div style={{height:"80%",overflow: 'auto', paddingRight: '8px', scrollbarWidth: 'none', 'msOverflowStyle': 'none' }}>
+              <div style={{height:"80%",overflow: 'auto', paddingRight: '8px', paddingLeft: '8px', scrollbarWidth: 'none', 'msOverflowStyle': 'none' }}>
                 <Messages />
               </div>
               <div style={{height:"10%", width:"100%" ,backgroundColor: "rgba(113, 113, 115, 0.533)",borderBottomRightRadius:"12px",display:"flex",alignItems:"center" }}>

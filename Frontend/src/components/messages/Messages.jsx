@@ -3,9 +3,12 @@ import useGetMessages from '../../hooks/useGetMessages'
 import MessageBoxSkeleton from '../skeletons/MessageBoxSkeleton';
 import Message from './Message';
 import { Typography } from '@mui/material';
+import useListenMessages from '../../hooks/useListenMessages';
 
 export default function Messages() {
-  const { messages, loading} = useGetMessages();
+  const { messages, loading } = useGetMessages();
+   useListenMessages()
+
   const bottomRef = useRef(null);
 
 
